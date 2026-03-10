@@ -16,6 +16,7 @@ import {
   FaCalendarAlt,
 } from "react-icons/fa";
 import "./StitchingWork.css";
+import { API_URL } from "../config";
 
 // Brand and Model Configuration
 const BRAND_MODELS = {
@@ -70,9 +71,6 @@ function StitchingWork() {
 
   // Available models based on selected brand
   const availableModels = brand ? BRAND_MODELS[brand] : [];
-
-  // API Base URL
-  const API_URL = "http://localhost:5000/api";
 
   // Generate Work Number from API
   useEffect(() => {

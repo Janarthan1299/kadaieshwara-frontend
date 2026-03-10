@@ -15,6 +15,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import "./InwardEntry.css";
+import { API_URL } from "../config";
 
 // Brand and Model Configuration (same as BillGeneration)
 const BRAND_MODELS = {
@@ -66,9 +67,6 @@ function InwardEntry() {
 
   // Available models based on selected brand
   const availableModels = brand ? BRAND_MODELS[brand] : [];
-
-  // API Base URL
-  const API_URL = "http://localhost:5000/api";
 
   // Generate DC Number from API
   useEffect(() => {

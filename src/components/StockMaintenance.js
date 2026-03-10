@@ -16,6 +16,7 @@ import {
   FaSync,
 } from "react-icons/fa";
 import "./StockMaintenance.css";
+import { API_URL } from "../config";
 
 function StockMaintenance() {
   const navigate = useNavigate();
@@ -28,9 +29,6 @@ function StockMaintenance() {
   // Brand options
   const BRANDS = ["Sukra", "Compat", "Romex", "Kings", "Acoste", "Zest"];
   const MODELS = ["RN", "RNS", "RNPS"];
-
-  // API Base URL
-  const API_URL = "http://localhost:5000/api";
 
   // Load stock from API
   useEffect(() => {

@@ -15,6 +15,7 @@ import {
   FaEdit,
 } from "react-icons/fa";
 import "./BillGeneration.css";
+import { API_URL } from "../config";
 
 // Brand and Model Configuration
 const BRAND_MODELS = {
@@ -38,8 +39,6 @@ const RATES = {
 
 // Size options
 const SIZES = [80, 85, 90, 95, 100];
-
-const API_URL = "http://localhost:5000/api";
 
 function BillGeneration() {
   const navigate = useNavigate();

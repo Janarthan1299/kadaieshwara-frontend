@@ -15,6 +15,7 @@ import {
   FaCalendarAlt,
   FaCut,
 } from "react-icons/fa";
+import { API_URL } from "../config";
 
 function EmployeeDetails() {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ function EmployeeDetails() {
   });
   const [weeklyStats, setWeeklyStats] = useState({});
 
-  const API_URL = "http://localhost:5000/api/employees";
+  const EMPLOYEES_API_URL = `${API_URL}/employees`;
 
   // Fetch employees
   useEffect(() => {
@@ -41,7 +42,7 @@ function EmployeeDetails() {
 
   const fetchEmployees = async () => {
     try {
-      const response = await fetch(API_URL);
+      const response = await fetch(EMPLOYEES_API_URL);
       if (response.ok) {
         const data = await response.json();
         setEmployees(data);
@@ -53,7 +54,7 @@ function EmployeeDetails() {
 
   const fetchWeeklyStats = async () => {
     try {
-      const response = await fetch(`${API_URL}/weekly-stats`);
+      const response = await fetch(`${EMPLOYEES_API_URL}/weekly-stats`);
       if (response.ok) {
         const data = await response.json();
         setWeeklyStats(data.stats || {});
@@ -71,7 +72,7 @@ function EmployeeDetails() {
     }
 
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch(EMPLOYEES_API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newEmployee),
@@ -97,7 +98,7 @@ function EmployeeDetails() {
     }
 
     try {
-      const response = await fetch(`${API_URL}/${editingEmployee._id}`, {
+      const response = await fetch(`${EMPLOYEES_API_URL}/${editingEmployee._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editingEmployee),
@@ -126,7 +127,7 @@ function EmployeeDetails() {
     }
 
     try {
-      const response = await fetch(`${API_URL}/${id}`, {
+      const response = await fetch(`${EMPLOYEES_API_URL}/${id}`, {
         method: "DELETE",
       });
 

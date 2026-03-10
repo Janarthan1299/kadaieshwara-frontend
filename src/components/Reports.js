@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Reports.css";
+import { API_URL } from "../config";
 import {
   FaArrowLeft,
   FaExclamationTriangle,
@@ -35,7 +36,7 @@ function Reports() {
   useEffect(() => {
     const fetchPendingWork = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/stitching/pending-work");
+        const response = await fetch(`${API_URL}/stitching/pending-work`);
         if (response.ok) {
           const data = await response.json();
           setPendingWorkData(data);
@@ -51,7 +52,7 @@ function Reports() {
   useEffect(() => {
     const fetchDamagedPieces = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/stitching/damaged-pieces");
+        const response = await fetch(`${API_URL}/stitching/damaged-pieces`);
         if (response.ok) {
           const data = await response.json();
           setDamagedPiecesData(data);

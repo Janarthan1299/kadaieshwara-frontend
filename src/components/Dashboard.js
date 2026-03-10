@@ -27,6 +27,7 @@ import {
   FaTimes,
   FaExchangeAlt,
 } from "react-icons/fa";
+import { API_URL } from "../config";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -49,9 +50,6 @@ function Dashboard() {
   const [selectedAccount, setSelectedAccount] = useState(null);
   const [switchPassword, setSwitchPassword] = useState("");
   const [switchError, setSwitchError] = useState("");
-
-  // API Base URL
-  const API_URL = "http://localhost:5000/api";
 
   // Sync stock from all entries
   const handleSyncStock = async () => {
