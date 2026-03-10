@@ -40,6 +40,17 @@ const RATES = {
 // Size options
 const SIZES = [80, 85, 90, 95, 100];
 
+// Helper function to handle floating-point precision
+const roundToTwo = (num) => Math.round((num + Number.EPSILON) * 100) / 100;
+
+// Helper function to safely split amount into rupees and paise
+const splitAmount = (amount) => {
+  const rounded = roundToTwo(amount);
+  const rupees = Math.floor(rounded + 0.001); // Add small epsilon for safety
+  const paise = Math.round((rounded - Math.floor(rounded)) * 100);
+  return { rupees, paise };
+};
+
 function BillGeneration() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -116,7 +127,7 @@ function BillGeneration() {
     const piecesNum = parseInt(pieces) || 0;
     const damagedNum = parseInt(damagedPieces) || 0;
     const damageDeduction = damagedNum * 100;
-    setTotalAmount((piecesNum * rate) - damageDeduction);
+    setTotalAmount(roundToTwo((piecesNum * rate) - damageDeduction));
   }, [pieces, damagedPieces, rate]);
 
   // Reset model and size when brand changes
@@ -151,7 +162,7 @@ function BillGeneration() {
               damagedPieces: damagedNum,
               rate,
               damageDeduction,
-              total: (piecesNum * rate) - damageDeduction,
+              total: roundToTwo((piecesNum * rate) - damageDeduction),
               inwardDcNo,
               outwardDcNo,
             }
@@ -169,7 +180,7 @@ function BillGeneration() {
         damagedPieces: damagedNum,
         rate,
         damageDeduction,
-        total: (piecesNum * rate) - damageDeduction,
+        total: roundToTwo((piecesNum * rate) - damageDeduction),
         inwardDcNo,
         outwardDcNo,
         sac: "998819",
@@ -242,7 +253,7 @@ function BillGeneration() {
               damagedPieces: 0,
               rate: itemRate,
               damageDeduction: 0,
-              total: item.stitchedPieces * itemRate,
+              total: roundToTwo(item.stitchedPieces * itemRate),
               inwardDcNo: "",
               outwardDcNo: "",
               sac: "998819",
@@ -447,8 +458,7 @@ function BillGeneration() {
   };
 
   const amountInWords = (amount) => {
-    const rupees = Math.floor(amount);
-    const paise = Math.round((amount - rupees) * 100);
+    const { rupees, paise } = splitAmount(amount);
     let words = 'Rupees ' + numberToWords(rupees);
     if (paise > 0) {
       words += ' and ' + numberToWords(paise) + ' Paise';
@@ -878,10 +888,8 @@ function BillGeneration() {
                   </thead>
                   <tbody>
                     {previewBill.items?.map((item, index) => {
-                      const rateRs = Math.floor(item.rate || 0);
-                      const ratePs = Math.round(((item.rate || 0) - rateRs) * 100);
-                      const amountRs = Math.floor(item.total || 0);
-                      const amountPs = Math.round(((item.total || 0) - amountRs) * 100);
+                      const rateParts = splitAmount(item.rate || 0);
+                      const amountParts = splitAmount(item.total || 0);
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -889,10 +897,10 @@ function BillGeneration() {
                           <td>{item.inwardDcNo || ""}</td>
                           <td>{item.outwardDcNo || ""}</td>
                           <td>{item.pieces}</td>
-                          <td>{rateRs}</td>
-                          <td>{ratePs.toString().padStart(2, '0')}</td>
-                          <td className="amount-rs">{amountRs}</td>
-                          <td className="amount-ps">{amountPs.toString().padStart(2, '0')}</td>
+                          <td>{rateParts.rupees}</td>
+                          <td>{rateParts.paise.toString().padStart(2, '0')}</td>
+                          <td className="amount-rs">{amountParts.rupees}</td>
+                          <td className="amount-ps">{amountParts.paise.toString().padStart(2, '0')}</td>
                         </tr>
                       );
                     })}
@@ -919,10 +927,10 @@ function BillGeneration() {
                     <div className="amount-words">
                       <strong>Total Amount in Words :</strong><br />
                       {amountInWords((() => {
-                        const subtotal = previewBill.grandTotal || 0;
-                        const sgst = subtotal * 0.025;
-                        const cgst = subtotal * 0.025;
-                        const grandTotal = subtotal + sgst + cgst;
+                        const subtotal = roundToTwo(previewBill.grandTotal || 0);
+                        const sgst = roundToTwo(subtotal * 0.025);
+                        const cgst = roundToTwo(subtotal * 0.025);
+                        const grandTotal = roundToTwo(subtotal + sgst + cgst);
                         return Math.round(grandTotal);
                       })())}
                     </div>
@@ -938,10 +946,8 @@ function BillGeneration() {
                       <span className="total-label">TOTAL</span>
                       <span className="total-value">
                         {(() => {
-                          const total = previewBill.grandTotal || 0;
-                          const rs = Math.floor(total);
-                          const ps = Math.round((total - rs) * 100);
-                          return `${rs}.${ps.toString().padStart(2, '0')}`;
+                          const parts = splitAmount(previewBill.grandTotal || 0);
+                          return `${parts.rupees}.${parts.paise.toString().padStart(2, '0')}`;
                         })()}
                       </span>
                     </div>
@@ -949,10 +955,9 @@ function BillGeneration() {
                       <span className="total-label">SGST - 2.5 %</span>
                       <span className="total-value">
                         {(() => {
-                          const sgst = (previewBill.grandTotal || 0) * 0.025;
-                          const rs = Math.floor(sgst);
-                          const ps = Math.round((sgst - rs) * 100);
-                          return `${rs}.${ps.toString().padStart(2, '0')}`;
+                          const sgst = roundToTwo((previewBill.grandTotal || 0) * 0.025);
+                          const parts = splitAmount(sgst);
+                          return `${parts.rupees}.${parts.paise.toString().padStart(2, '0')}`;
                         })()}
                       </span>
                     </div>
@@ -960,10 +965,9 @@ function BillGeneration() {
                       <span className="total-label">CGST - 2.5 %</span>
                       <span className="total-value">
                         {(() => {
-                          const cgst = (previewBill.grandTotal || 0) * 0.025;
-                          const rs = Math.floor(cgst);
-                          const ps = Math.round((cgst - rs) * 100);
-                          return `${rs}.${ps.toString().padStart(2, '0')}`;
+                          const cgst = roundToTwo((previewBill.grandTotal || 0) * 0.025);
+                          const parts = splitAmount(cgst);
+                          return `${parts.rupees}.${parts.paise.toString().padStart(2, '0')}`;
                         })()}
                       </span>
                     </div>
@@ -971,12 +975,12 @@ function BillGeneration() {
                       <span className="total-label">Round Off</span>
                       <span className="total-value">
                         {(() => {
-                          const subtotal = previewBill.grandTotal || 0;
-                          const sgst = subtotal * 0.025;
-                          const cgst = subtotal * 0.025;
-                          const grandTotal = subtotal + sgst + cgst;
+                          const subtotal = roundToTwo(previewBill.grandTotal || 0);
+                          const sgst = roundToTwo(subtotal * 0.025);
+                          const cgst = roundToTwo(subtotal * 0.025);
+                          const grandTotal = roundToTwo(subtotal + sgst + cgst);
                           const rounded = Math.round(grandTotal);
-                          const roundOff = rounded - grandTotal;
+                          const roundOff = roundToTwo(rounded - grandTotal);
                           return roundOff >= 0 ? `+${roundOff.toFixed(2)}` : roundOff.toFixed(2);
                         })()}
                       </span>
@@ -985,10 +989,10 @@ function BillGeneration() {
                       <span className="total-label">Grand TOTAL</span>
                       <span className="total-value">
                         {(() => {
-                          const subtotal = previewBill.grandTotal || 0;
-                          const sgst = subtotal * 0.025;
-                          const cgst = subtotal * 0.025;
-                          const grandTotal = subtotal + sgst + cgst;
+                          const subtotal = roundToTwo(previewBill.grandTotal || 0);
+                          const sgst = roundToTwo(subtotal * 0.025);
+                          const cgst = roundToTwo(subtotal * 0.025);
+                          const grandTotal = roundToTwo(subtotal + sgst + cgst);
                           return Math.round(grandTotal);
                         })()}
                       </span>

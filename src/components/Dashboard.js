@@ -293,10 +293,12 @@ function Dashboard() {
   // Format recent inward entries for display
   const recentInwardEntries = inwardHistory.slice(0, 5).map(entry => ({
     id: entry.dcNumber,
+    _id: entry._id,
     items: entry.items.map(i => `${i.brand} ${i.model} (${i.size})`).join(', '),
     quantity: `${entry.totals.received} pcs`,
     date: new Date(entry.receivedDate).toLocaleDateString('en-IN'),
-    status: "Received"
+    status: "Received",
+    originalEntry: entry
   }));
 
   const stats = [
@@ -311,9 +313,9 @@ function Dashboard() {
   // Work Status Summary - Today's data only
   const todayTotal = todayTotals.received + todayTotals.stitched + todayTotals.damaged;
   const workStatus = [
-    { name: "Pieces Received Today", current: todayTotals.received, total: todayTotal || 1, unit: "pieces" },
-    { name: "Stitched Today", current: todayTotals.stitched, total: todayTotal || 1, unit: "pieces" },
-    { name: "Damaged Today", current: todayTotals.damaged, total: todayTotal || 1, unit: "pieces" },
+    { name: "Pieces Received Today", current: todayTotals.received, total: todayTotal || 1, unit: "pieces", route: "/inward-entry?tab=history" },
+    { name: "Stitched Today", current: todayTotals.stitched, total: todayTotal || 1, unit: "pieces", route: "/stitching-work?tab=history" },
+    { name: "Damaged Today", current: todayTotals.damaged, total: todayTotal || 1, unit: "pieces", route: "/reports" },
   ];
 
   
@@ -631,7 +633,13 @@ function Dashboard() {
                               </span>
                             </td>
                             <td className="actions">
-                              <button className="action-btn view"><FaEye /></button>
+                              <button 
+                                className="action-btn view" 
+                                onClick={() => navigate(`/inward-entry?tab=history&view=${entry._id}`)}
+                                title="View Entry"
+                              >
+                                <FaEye />
+                              </button>
                             </td>
                           </tr>
                         ))
@@ -667,7 +675,12 @@ function Dashboard() {
                           style={{width: `${todayTotal > 0 ? (item.current / todayTotal) * 100 : 0}%`}}
                         ></div>
                       </div>
-                      <button className="restock-btn">View</button>
+                      <button 
+                        className="restock-btn" 
+                        onClick={() => navigate(item.route)}
+                      >
+                        View
+                      </button>
                     </div>
                   ))}
                   {todayTotal === 0 && (

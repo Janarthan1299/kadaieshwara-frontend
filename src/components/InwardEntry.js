@@ -37,6 +37,7 @@ function InwardEntry() {
   // Check for tab query parameter
   const queryParams = new URLSearchParams(location.search);
   const initialTab = queryParams.get('tab') || "create";
+  const viewEntryId = queryParams.get('view');
   
   const [activeTab, setActiveTab] = useState(initialTab);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -114,6 +115,17 @@ function InwardEntry() {
     };
     fetchData();
   }, []);
+
+  // Handle view entry from URL parameter
+  useEffect(() => {
+    if (viewEntryId && inwardHistory.length > 0) {
+      const entry = inwardHistory.find(e => e._id === viewEntryId);
+      if (entry) {
+        setViewEntry(entry);
+        setShowViewModal(true);
+      }
+    }
+  }, [viewEntryId, inwardHistory]);
 
   // Reset model when brand changes
   useEffect(() => {
