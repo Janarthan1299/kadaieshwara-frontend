@@ -218,18 +218,7 @@ function StockMaintenance() {
     }
   };
 
-  // Reset all stock data
-  const handleResetData = () => {
-    if (window.confirm('Are you sure you want to reset ALL stock data? This will clear:\n- Item Stock\n- Inward History\n- Stitching History\n\nThis action cannot be undone!')) {
-      localStorage.removeItem('itemStock');
-      localStorage.removeItem('inwardHistory');
-      localStorage.removeItem('stitchingHistory');
-      localStorage.removeItem('lastInwardDcNumber');
-      localStorage.removeItem('lastStitchingWorkNumber');
-      setStock({});
-      alert('All stock data has been reset successfully!');
-    }
-  };
+  
 
   return (
     <div className="stock-container">

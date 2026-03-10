@@ -13,24 +13,15 @@ import {
   FaSearch,
   FaChevronRight,
   FaChevronDown,
-  FaRupeeSign,
-  FaWarehouse,
   FaClipboardList,
-  FaPlus,
   FaExclamationTriangle,
-  FaCheckCircle,
   FaClock,
-  FaCalendarAlt,
   FaArrowUp,
   FaArrowRight,
   FaEye,
-  FaPrint,
-  FaEdit,
   FaPhoneAlt,
   FaEnvelope,
   FaMapMarkerAlt,
-  FaIndustry,
-  FaLayerGroup,
   FaSync,
   FaLock,
   FaTimes,
@@ -317,19 +308,7 @@ function Dashboard() {
     { label: "Damaged", value: stockTotals.damaged.toLocaleString(), icon: <FaExclamationTriangle />, change: "Total damaged pieces", positive: false },
   ];
 
-  // Recent Activities from actual data
-  const recentActivities = [
-    ...inwardHistory.slice(0, 2).map(entry => ({
-      action: "Pieces received from Ramraj",
-      detail: `${entry.totals.received} pieces - ${entry.dcNumber}`,
-      time: new Date(entry.createdAt).toLocaleDateString('en-IN')
-    })),
-    ...stitchingHistory.slice(0, 2).map(entry => ({
-      action: "Stitching completed",
-      detail: `${entry.totals.stitched} pieces - ${entry.workNumber}`,
-      time: new Date(entry.createdAt).toLocaleDateString('en-IN')
-    })),
-  ].slice(0, 4);
+  
 
   // Work Status Summary - Today's data only
   const todayTotal = todayTotals.received + todayTotals.stitched + todayTotals.damaged;
@@ -339,24 +318,9 @@ function Dashboard() {
     { name: "Damaged Today", current: todayTotals.damaged, total: todayTotal || 1, unit: "pieces" },
   ];
 
-  // Pending Stitching Work from stock data
-  const pendingStitchingWork = Object.values(stockData)
-    .filter(item => item.pending > 0)
-    .slice(0, 4)
-    .map(item => ({
-      task: `${item.brand} ${item.model} - Size ${item.size}`,
-      priority: item.pending > 50 ? "High" : item.pending > 20 ? "Medium" : "Low",
-      due: "Pending",
-      quantity: `${item.pending} pcs`
-    }));
+  
 
-  // Summary from real data
-  const paymentSummary = [
-    { name: "Total Received", items: stockTotals.received, value: `${stockTotals.received} pcs`, trend: "" },
-    { name: "Total Stitched", items: stockTotals.stitched, value: `${stockTotals.stitched} pcs`, trend: "" },
-    { name: "Pending", items: stockTotals.pending, value: `${stockTotals.pending} pcs`, trend: "" },
-    { name: "Damaged", items: stockTotals.damaged, value: `${stockTotals.damaged} pcs`, trend: "" },
-  ];
+  
 
   // Quick Action Buttons
   const quickActions = [
@@ -376,14 +340,7 @@ function Dashboard() {
     }
   };
 
-  const getPriorityColor = (priority) => {
-    switch(priority) {
-      case 'High': return '#ef4444';
-      case 'Medium': return '#f59e0b';
-      case 'Low': return '#10b981';
-      default: return '#64748b';
-    }
-  };
+  
 
   const formatDate = (date) => {
     return date.toLocaleDateString('en-IN', { 
@@ -394,13 +351,7 @@ function Dashboard() {
     });
   };
 
-  const formatTime = (date) => {
-    return date.toLocaleTimeString('en-IN', { 
-      hour: '2-digit', 
-      minute: '2-digit',
-      second: '2-digit'
-    });
-  };
+  
 
   return (
     <div className="dashboard-container">
@@ -420,9 +371,9 @@ function Dashboard() {
           <div className="nav-section">
             <span className="nav-title">MAIN MENU</span>
             {modules.map((module, index) => (
-              <a 
+              <button 
                 key={index} 
-                href="#" 
+                type="button" 
                 className="nav-item" 
                 style={{'--accent-color': module.color}}
                 onClick={(e) => {
@@ -447,7 +398,7 @@ function Dashboard() {
                 <span className="nav-icon">{module.icon}</span>
                 <span className="nav-label">{module.name}</span>
                 <FaChevronRight className="nav-arrow" />
-              </a>
+              </button>
             ))}
           </div>
         </nav>
@@ -648,7 +599,7 @@ function Dashboard() {
               <div className="orders-section card-section">
                 <div className="section-header">
                   <h2><FaArrowDown /> Pieces Received from Ramraj</h2>
-                  <a href="#" className="view-all">View All <FaArrowRight /></a>
+                  <button type="button" className="view-all" onClick={() => navigate('/inward-entry?tab=history')}>View All <FaArrowRight /></button>
                 </div>
                 <div className="orders-table">
                   <table>

@@ -13,7 +13,6 @@ import {
   FaSearch,
   FaEye,
   FaTimes,
-  FaEdit,
 } from "react-icons/fa";
 import "./InwardEntry.css";
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   FaFileInvoiceDollar,
@@ -44,8 +44,8 @@ const API_URL = "http://localhost:5000/api";
 function BillGeneration() {
   const navigate = useNavigate();
   const location = useLocation();
+  // eslint-disable-next-line no-unused-vars
   const admin = JSON.parse(localStorage.getItem("admin") || "{}");
-  const printRef = useRef();
   
   // Check for tab query parameter
   const queryParams = new URLSearchParams(location.search);
@@ -62,9 +62,12 @@ function BillGeneration() {
   const [inwardDcNo, setInwardDcNo] = useState("");
   const [outwardDcNo, setOutwardDcNo] = useState("");
 
-  // Customer party details
+  // Customer party details (reserved for future use)
+  // eslint-disable-next-line no-unused-vars
   const [toPartyName, setToPartyName] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [toPartyAddress, setToPartyAddress] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [toPartyGstin, setToPartyGstin] = useState("");
 
   // Bill items list
@@ -271,7 +274,6 @@ function BillGeneration() {
   const grandTotal = billItems.reduce((sum, item) => sum + item.total, 0);
   const totalPieces = billItems.reduce((sum, item) => sum + item.pieces, 0);
   const totalDamagedPieces = billItems.reduce((sum, item) => sum + (item.damagedPieces || 0), 0);
-  const totalDamageDeduction = billItems.reduce((sum, item) => sum + (item.damageDeduction || 0), 0);
 
   // Generate Bill
   const handleGenerateBill = async () => {

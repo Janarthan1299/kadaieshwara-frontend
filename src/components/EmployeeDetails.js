@@ -4,7 +4,6 @@ import "./EmployeeDetails.css";
 import {
   FaArrowLeft,
   FaUsers,
-  FaPlus,
   FaEdit,
   FaTrash,
   FaSearch,
