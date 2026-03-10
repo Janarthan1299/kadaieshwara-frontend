@@ -1,0 +1,1154 @@
+/* ============================================
+   KADAIESWARA TEX - Golden Thread Theme
+   Bill Generation Styles (Stitching Work Layout)
+   ============================================ */
+
+/* Bill Generation Container */
+.bill-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f5f0 0%, #e8e2d9 100%);
+}
+
+/* Top Header */
+.bill-container .top-header {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(30, 58, 95, 0.3);
+}
+
+.bill-container .header-left {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.bill-container .back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.bill-container .back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-3px);
+}
+
+.bill-container .page-title {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bill-container .page-title svg {
+  color: #d4a574;
+}
+
+/* Header Tabs */
+.bill-container .header-tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.bill-container .tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.bill-container .tab-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.bill-container .tab-btn.active {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Success Message */
+.bill-container .success-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  font-weight: 500;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Entry Content */
+.bill-container .entry-content {
+  padding: 25px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Form Card */
+.bill-container .form-card,
+.bill-container .items-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(30, 58, 95, 0.1);
+  overflow: hidden;
+}
+
+.bill-container .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 25px;
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+  color: white;
+}
+
+.bill-container .card-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.bill-container .card-header h3 svg {
+  color: #d4a574;
+}
+
+.bill-container .card-body {
+  padding: 25px;
+}
+
+/* This Week Button in Header */
+.bill-container .this-week-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #d4a574 0%, #b8976a 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(212, 165, 116, 0.3);
+}
+
+.bill-container .this-week-btn:hover {
+  background: linear-gradient(135deg, #c49567 0%, #a88760 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 165, 116, 0.4);
+}
+
+.bill-container .this-week-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Form Styles */
+.bill-container .form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.bill-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bill-container .form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.bill-container .form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e3a5f;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bill-container .form-group label svg {
+  color: #d4a574;
+  font-size: 12px;
+}
+
+.bill-container .form-group input,
+.bill-container .form-group select {
+  padding: 12px 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #334155;
+  background: #f8f5f0;
+  transition: all 0.3s ease;
+}
+
+.bill-container .form-group input:focus,
+.bill-container .form-group select:focus {
+  outline: none;
+  border-color: #d4a574;
+  box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+}
+
+/* Calculation Row */
+.bill-container .calculation-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #f8f5f0, #fdfbf8);
+  border-radius: 12px;
+  border: 1px solid rgba(212, 165, 116, 0.2);
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.bill-container .calc-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bill-container .calc-label {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.bill-container .calc-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e3a5f;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.bill-container .calc-value.highlight {
+  color: #d4a574;
+}
+
+.bill-container .damage-box {
+  background: linear-gradient(135deg, #fef2f2, #fee2e2) !important;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #fca5a5 !important;
+}
+
+.bill-container .damage-value {
+  color: #dc2626 !important;
+}
+
+.bill-container .action-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.bill-container .add-item-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bill-container .add-item-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(30, 58, 95, 0.3);
+}
+
+.bill-container .add-item-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bill-container .add-item-btn.update-mode {
+  background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+}
+
+.bill-container .cancel-edit-btn {
+  background: linear-gradient(135deg, #6b7280, #4b5563);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.bill-container .cancel-edit-btn:hover {
+  background: linear-gradient(135deg, #4b5563, #374151);
+  transform: translateY(-1px);
+}
+
+/* Table Styles */
+.bill-container .table-container {
+  overflow-x: auto;
+}
+
+.bill-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bill-container th {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+  color: white;
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bill-container td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 14px;
+  color: #334155;
+}
+
+.bill-container tbody tr:hover {
+  background: #f8f5f0;
+}
+
+.bill-container .brand-cell {
+  font-weight: 600;
+  color: #1e3a5f;
+}
+
+.bill-container .stitched-cell {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.bill-container .damaged-cell {
+  color: #f97316;
+  font-weight: 600;
+}
+
+.bill-container .deduction-cell {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.bill-container .action-cell {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.bill-container tfoot td {
+  background: linear-gradient(135deg, #f8f5f0 0%, #e8e2d9 100%);
+  font-size: 15px;
+  border-top: 2px solid #d4a574;
+}
+
+/* Edit and Delete Buttons */
+.bill-container .edit-btn {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.bill-container .edit-btn:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+.bill-container .delete-btn {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bill-container .delete-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+/* Save Section */
+.bill-container .save-section {
+  padding: 20px 25px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.bill-container .preview-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 30px;
+  background: white;
+  border: 2px solid #1e3a5f;
+  border-radius: 10px;
+  color: #1e3a5f;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bill-container .preview-btn:hover {
+  background: #1e3a5f;
+  color: white;
+}
+
+.bill-container .save-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 30px;
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bill-container .save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(30, 58, 95, 0.4);
+}
+
+.bill-container .save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* History Content */
+.bill-container .history-content {
+  margin: 25px 30px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(30, 58, 95, 0.1);
+  overflow: hidden;
+}
+
+.bill-container .history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid #e2e8f0;
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+  color: white;
+}
+
+.bill-container .history-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.bill-container .history-header h3 svg {
+  color: #d4a574;
+}
+
+.bill-container .item-count {
+  background: rgba(212, 165, 116, 0.2);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #d4a574;
+  font-weight: 500;
+}
+
+/* View Button */
+.bill-container .view-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #d4a574 0%, #c9956c 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bill-container .view-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 165, 116, 0.4);
+}
+
+/* Status Badge */
+.bill-container .status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.bill-container .status-badge.generated,
+.bill-container .status-badge.completed {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  color: #166534;
+}
+
+.bill-container .status-badge.pending {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  color: #92400e;
+}
+
+/* Empty State */
+.bill-container .empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: #64748b;
+}
+
+.bill-container .empty-state svg {
+  font-size: 48px;
+  color: #d4a574;
+  margin-bottom: 16px;
+}
+
+.bill-container .empty-state p {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Loading State */
+.bill-container .loading-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  color: #64748b;
+  font-size: 16px;
+}
+
+/* Damaged Input */
+.bill-container .damaged-input {
+  border-color: #f97316 !important;
+}
+
+.bill-container .damaged-input:focus {
+  border-color: #ea580c !important;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15) !important;
+}
+
+/* Editing Mode */
+.bill-container .form-card.editing-mode {
+  border: 2px solid #3b82f6;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+/* Bill Preview Modal */
+.preview-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(30, 58, 95, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.preview-modal {
+  background: white;
+  border-radius: 16px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(30, 58, 95, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background: #f5f5f5;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+  background: linear-gradient(135deg, #f8f5f0, #fdfbf8);
+}
+
+.preview-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e3a5f;
+  margin: 0;
+}
+
+.close-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  background: #fef2f2;
+  border-color: #fca5a5;
+  color: #ef4444;
+}
+
+.preview-body {
+  padding: 24px;
+}
+
+.preview-actions {
+  padding: 20px 24px;
+  border-top: 1px solid rgba(212, 165, 116, 0.2);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background: #f8f5f0;
+}
+
+.print-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #1e3a5f, #2d4a6f);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.print-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(30, 58, 95, 0.3);
+}
+
+.print-action-btn svg {
+  color: #d4a574;
+}
+
+/* Invoice Print Styles */
+.invoice-container {
+  max-width: 800px;
+  margin: 0 auto;
+  border: 2px solid #000;
+  font-family: 'Times New Roman', serif;
+  background: white;
+}
+
+.invoice-header {
+  text-align: center;
+  border-bottom: 1px solid #000;
+  padding: 10px 15px;
+  background: white;
+}
+
+.invoice-header .header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.invoice-header .header-spacer {
+  width: 100px;
+}
+
+.invoice-header .tax-invoice-label {
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.invoice-header .cell-number {
+  font-size: 11px;
+  font-weight: bold;
+  width: 100px;
+  text-align: right;
+}
+
+.invoice-header .company-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 5px;
+}
+
+.invoice-header .company-logo img.shiva-logo {
+  width: 50px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.invoice-header .company-name {
+  font-size: 26px;
+  font-weight: bold;
+  color: #000;
+  letter-spacing: 2px;
+}
+
+.invoice-header .company-address {
+  font-size: 11px;
+  line-height: 1.4;
+  color: #000;
+}
+
+/* Invoice Details Section */
+.invoice-details {
+  display: flex;
+  border-bottom: 1px solid #000;
+}
+
+.invoice-to {
+  flex: 1;
+  padding: 8px;
+  border-right: 1px solid #000;
+  font-size: 11px;
+  min-height: 75px;
+}
+
+.invoice-to .to-row {
+  margin-bottom: 3px;
+}
+
+.invoice-to .to-label {
+  font-weight: bold;
+}
+
+.invoice-to .to-value {
+  font-weight: normal;
+}
+
+.invoice-to .address-row {
+  margin-left: 20px;
+}
+
+.invoice-to .gstin-row {
+  margin-top: 5px;
+}
+
+.invoice-info {
+  width: 200px;
+  padding: 0;
+  font-size: 11px;
+}
+
+.invoice-info-row {
+  padding: 4px 8px;
+  border-bottom: 1px solid #000;
+}
+
+.invoice-info-row.bordered {
+  display: flex;
+  justify-content: space-between;
+}
+
+.invoice-info-row .info-value {
+  font-weight: bold;
+}
+
+/* SAC and Date Row */
+.sac-date-row {
+  display: flex;
+  border-bottom: 1px solid #000;
+}
+
+.sac-section {
+  flex: 1;
+  padding: 6px 8px;
+  font-size: 11px;
+  border-right: 1px solid #000;
+}
+
+.sac-section .sac-label {
+  font-weight: bold;
+}
+
+.sac-section .sac-value {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.invoice-date-section {
+  width: 200px;
+  padding: 6px 8px;
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.invoice-date-section .info-value {
+  font-weight: bold;
+}
+
+/* Items Table */
+.invoice-container .items-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.invoice-container .items-table th,
+.invoice-container .items-table td {
+  border: 1px solid #000;
+  padding: 4px 6px;
+  text-align: center;
+  font-size: 11px;
+}
+
+.invoice-container .items-table th {
+  background: #fff;
+  font-weight: bold;
+}
+
+.invoice-container .items-table .particulars {
+  text-align: left;
+  padding-left: 8px;
+  text-transform: uppercase;
+}
+
+.invoice-container .items-table .amount-rs,
+.invoice-container .items-table .amount-ps {
+  text-align: right;
+}
+
+.invoice-container .items-table tbody tr {
+  height: 25px;
+}
+
+/* Totals Section */
+.invoice-totals {
+  display: flex;
+  border-top: 1px solid #000;
+}
+
+.amount-words-section {
+  flex: 1;
+  padding: 8px;
+  border-right: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100px;
+}
+
+.amount-words {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.signature-area {
+  text-align: right;
+  margin-top: 15px;
+}
+
+.signature-line {
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.totals-table {
+  width: 200px;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 8px;
+  border-bottom: 1px solid #000;
+  font-size: 11px;
+}
+
+.total-row.grand-total {
+  font-weight: bold;
+  font-size: 12px;
+  background: #f5f5f5;
+}
+
+.total-row .total-label {
+  font-weight: bold;
+}
+
+.total-row .total-value {
+  text-align: right;
+  min-width: 80px;
+}
+
+/* Customer Section */
+.customer-section {
+  margin-bottom: 20px;
+}
+
+/* Loading State */
+.loading-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f0f0f0;
+  border-top-color: #d4a574;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bill-container .top-header {
+    flex-direction: column;
+    gap: 16px;
+    padding: 15px 20px;
+  }
+  
+  .bill-container .header-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .bill-container .header-tabs {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .bill-container .entry-content {
+    padding: 15px;
+  }
+  
+  .bill-container .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .bill-container .calculation-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .bill-container .action-buttons {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 15px;
+  }
+  
+  .bill-container .save-section {
+    flex-direction: column;
+  }
+  
+  .bill-container .save-section button {
+    width: 100%;
+  }
+  
+  .bill-container .history-content {
+    margin: 15px;
+  }
+}
+
+/* Damaged Pieces Styles */
+.damaged-input {
+  border-color: #f97316 !important;
+}
+
+.damaged-input:focus {
+  border-color: #ea580c !important;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15) !important;
+}
+
+.damage-box {
+  background: linear-gradient(135deg, #fef2f2, #fee2e2) !important;
+  border-color: #fca5a5 !important;
+}
+
+.damage-value {
+  color: #dc2626 !important;
+}
+
+.damaged-cell {
+  color: #f97316;
+  font-weight: 600;
+}
+
+.deduction-cell {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.gt-damaged {
+  background: linear-gradient(135deg, #fef2f2, #fee2e2) !important;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.gt-value-damaged {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+/* Edit Button Styles */
+.action-cell {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.edit-btn {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.edit-btn:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.cancel-edit-btn {
+  background: linear-gradient(135deg, #6b7280, #4b5563);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.cancel-edit-btn:hover {
+  background: linear-gradient(135deg, #4b5563, #374151);
+  transform: translateY(-1px);
+}
+
+.add-item-btn.update-mode {
+  background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+}
+
+.add-item-btn.update-mode:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+}
+
+.bill-form-section.editing-mode {
+  border: 2px solid #3b82f6;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+.bill-form-section.editing-mode .section-header h2 {
+  color: #2563eb;
+}
