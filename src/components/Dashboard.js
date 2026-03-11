@@ -26,6 +26,7 @@ import {
   FaLock,
   FaTimes,
   FaExchangeAlt,
+  FaBars,
 } from "react-icons/fa";
 import { API_URL } from "../config";
 
@@ -50,6 +51,9 @@ function Dashboard() {
   const [selectedAccount, setSelectedAccount] = useState(null);
   const [switchPassword, setSwitchPassword] = useState("");
   const [switchError, setSwitchError] = useState("");
+  
+  // Mobile sidebar state
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Sync stock from all entries
   const handleSyncStock = async () => {
@@ -355,8 +359,13 @@ function Dashboard() {
 
   return (
     <div className="dashboard-container">
+      {/* Mobile Overlay */}
+      {sidebarOpen && (
+        <div className="mobile-overlay" onClick={() => setSidebarOpen(false)}></div>
+      )}
+      
       {/* Sidebar */}
-      <aside className="sidebar">
+      <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
           <div className="logo">
             <img src="/logo.png" alt="Kadaieswara Tex" className="logo-image" />
@@ -378,6 +387,7 @@ function Dashboard() {
                 style={{'--accent-color': module.color}}
                 onClick={(e) => {
                   e.preventDefault();
+                  setSidebarOpen(false); // Close sidebar on mobile
                   if (module.name === 'Reports') {
                     navigate('/reports');
                   } else if (module.name === 'Company Details') {
@@ -404,7 +414,7 @@ function Dashboard() {
         </nav>
 
         <div className="sidebar-footer">
-          <button className="logout-sidebar-btn" onClick={handleLogout}>
+          <button className="logout-sidebar-btn" onClick={() => { setSidebarOpen(false); handleLogout(); }}>
             <FaSignOutAlt />
             <span>Logout</span>
           </button>
@@ -415,6 +425,15 @@ function Dashboard() {
       <div className="main-content">
         {/* Top Header */}
         <header className="top-header">
+          {/* Mobile Hamburger Button */}
+          <button 
+            className="mobile-menu-btn" 
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            aria-label="Toggle menu"
+          >
+            <FaBars />
+          </button>
+          
           <div className="header-search">
             <FaSearch className="search-icon" />
             <input 
